@@ -17,7 +17,6 @@ def isValid(text):
         return False
     return True
 
-
 """
     create a list of wordboxes found on the passed image
     TODO: use function to actually perform task1 and move the other stuff
