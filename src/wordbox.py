@@ -1,4 +1,6 @@
 from string import punctuation
+import numpy as np
+
 kStripPunctuation = True
 
 class Wordbox:
@@ -31,10 +33,25 @@ class Wordbox:
             self.neighs['bottom'] = bottom
         pass
         
+    def set_feature_vector(self, feature_vector):
+        self.feature_vector = feature_vector
+
     def normalize(self, maxAbsDist):
     # Normalize the distance
         for key in self.neighs:
             self.neighs[key]['distance'] /= maxAbsDist
+
+    def get_numeric_vector(self):
+    # Get the numeric features
+        def fetch(key):
+            # TODO: is 0 a good default value?
+            return self.neighs[key]['distance'] if key in self.neighs else 0
+        # TODO: maybe change the order for better accuracy?
+        return np.asarray([fetch('left'), fetch('top'), fetch('right'), fetch('bottom')])
+
+    def get_boolean_vector(self):
+        # TODO: @Pascal
+        return np.asarray([])
 
     def __str__(self):
         def get_neigh(key):
