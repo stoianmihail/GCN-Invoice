@@ -22,7 +22,9 @@ def is_integer(s):
 
     :param string: s, string to check for an integer
     """
-    if s[0] in ('-', '+'):
+    if len(s) == 0:
+        return False
+    elif s[0] in ('-', '+'):
         return s[1:].isdigit()
     return s.isdigit()
 
