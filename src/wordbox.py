@@ -1,5 +1,6 @@
 from string import punctuation
 import numpy as np
+from src.featureCalculator import * 
 
 kStripPunctuation = True
 
@@ -51,7 +52,8 @@ class Wordbox:
 
     def get_boolean_vector(self):
         # TODO: @Pascal
-        return np.asarray([])
+        arr =  np.asarray([is_date(self.text), is_integer(self.text), is_price(self.text)])
+        return arr.astype(int)
 
     def __str__(self):
         def get_neigh(key):
