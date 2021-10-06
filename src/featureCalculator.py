@@ -12,7 +12,7 @@ def is_date(s, fuzzy=False):
         parse(s, fuzzy=fuzzy)
         return True
 
-    except ValueError:
+    except Exception as e:
         return False
 
 
